@@ -1,0 +1,427 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 142 70% 70%; /* Light green */
+
+    --card: 0 0% 5%; /* Slightly lighter black for cards */
+    --card-foreground: 142 70% 70%; /* Light green */
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 142 70% 70%;
+
+    --primary: 142 70% 50%; /* Green primary */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 142 30% 20%;
+    --secondary-foreground: 142 70% 70%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 142 50% 60%;
+
+    --accent: 142 30% 20%;
+    --accent-foreground: 142 70% 70%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 0%;
+
+    --border: 142 30% 20%;
+    --input: 142 30% 20%;
+    --ring: 142 70% 50%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 142 70% 70%; /* Light green */
+
+    --card: 0 0% 5%;
+    --card-foreground: 142 70% 70%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 142 70% 70%;
+
+    --primary: 142 70% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 142 30% 20%;
+    --secondary-foreground: 142 70% 70%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 142 50% 60%;
+
+    --accent: 142 30% 20%;
+    --accent-foreground: 142 70% 70%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 142 70% 70%;
+
+    --border: 142 30% 20%;
+    --input: 142 30% 20%;
+    --ring: 142 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Matrix-like animation */
+.matrix-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0, 255, 0, 0) 0%, rgba(0, 255, 0, 0.05) 100%);
+  background-size: 100% 100%;
+  animation: matrix 20s linear infinite;
+}
+
+@keyframes matrix {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Make cards more glassy */
+.card {
+  @apply backdrop-blur-sm bg-black/60 border-green-900/30;
+}
+
+/* Floating icons animation */
+.floating-icon {
+  animation: float linear infinite;
+  pointer-events: none;
+}
+
+.floating-binary {
+  animation: float linear infinite;
+  font-family: monospace;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(10px, 10px) rotate(5deg) scale(1.05);
+  }
+  50% {
+    transform: translate(0, 20px) rotate(0deg) scale(1);
+  }
+  75% {
+    transform: translate(-10px, 10px) rotate(-5deg) scale(0.95);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+/* Glitch effect */
+.glitch-overlay {
+  opacity: 0;
+  background: linear-gradient(transparent 0%, rgba(0, 255, 0, 0.2) 50%, transparent 100%);
+  background-size: 100% 3px;
+  transition: opacity 0.1s;
+}
+
+.glitch-overlay.active {
+  opacity: 1;
+  animation: glitch 0.2s steps(2) infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-3px, 3px);
+  }
+  40% {
+    transform: translate(-3px, -3px);
+  }
+  60% {
+    transform: translate(3px, 3px);
+  }
+  80% {
+    transform: translate(3px, -3px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Add a subtle scan line effect to the entire site */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Add a subtle CRT flicker effect */
+@keyframes flicker {
+  0% {
+    opacity: 0.97;
+  }
+  5% {
+    opacity: 0.95;
+  }
+  10% {
+    opacity: 0.97;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  20% {
+    opacity: 0.97;
+  }
+  25% {
+    opacity: 0.95;
+  }
+  30% {
+    opacity: 0.97;
+  }
+  35% {
+    opacity: 0.95;
+  }
+  40% {
+    opacity: 0.97;
+  }
+  45% {
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 0.97;
+  }
+  55% {
+    opacity: 0.95;
+  }
+  60% {
+    opacity: 0.97;
+  }
+  65% {
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.97;
+  }
+  75% {
+    opacity: 0.95;
+  }
+  80% {
+    opacity: 0.97;
+  }
+  85% {
+    opacity: 0.95;
+  }
+  90% {
+    opacity: 0.97;
+  }
+  95% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0.97;
+  }
+}
+
+body {
+  animation: flicker 0.3s infinite;
+}
+
+/* Add a text shadow to all text for a hacker feel */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+button,
+input,
+select,
+textarea {
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* Add a glow effect to buttons */
+.button,
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  position: relative;
+  overflow: hidden;
+}
+
+.button::after,
+button::after,
+[type="button"]::after,
+[type="reset"]::after,
+[type="submit"]::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.button:hover::after,
+button:hover::after,
+[type="button"]:hover::after,
+[type="reset"]:hover::after,
+[type="submit"]:hover::after {
+  opacity: 1;
+}
+
+/* Add a typing cursor effect to inputs */
+input,
+textarea {
+  caret-color: #00ff00;
+  caret-shape: block;
+}
+
+/* Add a subtle pulse to the cards */
+.card {
+  animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px 0 rgba(0, 255, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
+  }
+}
+
+/* DARK_BANKS Logo Animation Styles */
+@keyframes animate-glitch {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: translate(-20px, -10px);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+    transform: translate(20px, 10px);
+  }
+  40% {
+    clip-path: inset(43% 0 1% 0);
+    transform: translate(-20px, -10px);
+  }
+  60% {
+    clip-path: inset(25% 0 58% 0);
+    transform: translate(20px, 10px);
+  }
+  80% {
+    clip-path: inset(54% 0 7% 0);
+    transform: translate(-20px, -10px);
+  }
+  100% {
+    clip-path: inset(58% 0 43% 0);
+    transform: translate(20px, 10px);
+  }
+}
+
+.animate-glitch {
+  animation: animate-glitch 500ms infinite linear alternate-reverse;
+}
+
+.glitch-layer-1 {
+  clip-path: inset(40% 0 61% 0);
+  transform: translate(-2px, 2px);
+}
+
+.glitch-layer-2 {
+  clip-path: inset(20% 0 61% 0);
+  transform: translate(2px, -2px);
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Data stream effect */
+.data-stream {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.data-stream span {
+  position: absolute;
+  display: block;
+  color: rgba(0, 255, 0, 0.5);
+  font-size: 10px;
+  font-family: monospace;
+  animation: datafall linear infinite;
+}
+
+@keyframes datafall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
